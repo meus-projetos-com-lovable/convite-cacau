@@ -1,16 +1,46 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import Hero from "@/components/invite/Hero";
+import Timeline from "@/components/invite/Timeline";
+import Location from "@/components/invite/Location";
+import Mural from "@/components/invite/Mural";
+import RSVP from "@/components/invite/RSVP";
+import MobileNav from "@/components/invite/MobileNav";
+import branchDivider from "@/assets/branch-divider.png";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  useEffect(() => {
+    document.title = "50 Anos · Ação de Graças — 30 de Maio de 2026";
+    const meta = document.querySelector('meta[name="description"]');
+    const desc = "Convite digital: celebre 50 anos de vida e gratidão. RSVP, mapa, programa e mural de recados.";
+    if (meta) meta.setAttribute("content", desc);
+    else {
+      const m = document.createElement("meta");
+      m.name = "description"; m.content = desc;
+      document.head.appendChild(m);
+    }
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <main className="min-h-screen pb-24">
+      <Hero />
+
+      <div className="flex justify-center my-2 opacity-70">
+        <img src={branchDivider} alt="" aria-hidden width={120} height={120} className="w-20 h-20 object-contain" loading="lazy" />
+      </div>
+
+      <Timeline />
+      <Location />
+      <Mural />
+      <RSVP />
+
+      <footer className="text-center py-10 px-5 text-xs text-secondary tracking-wider">
+        <p className="font-script text-base text-primary italic mb-1">"Até aqui nos ajudou o Senhor"</p>
+        <p>1 Samuel 7.12 · 30 de Maio de 2026</p>
+      </footer>
+
+      <MobileNav />
+    </main>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
