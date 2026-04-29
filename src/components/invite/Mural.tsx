@@ -55,7 +55,7 @@ const Mural = () => {
       return;
     }
     setLoading(true);
-    const { error } = await supabase.from("mensagens").insert(parsed.data);
+    const { error } = await supabase.from("mensagens").insert({ nome: parsed.data.nome, mensagem: parsed.data.mensagem });
     setLoading(false);
     if (error) {
       toast.error("Não foi possível enviar.");
