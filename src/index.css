@@ -1,96 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* === Paleta orgânica bege/verde === */
+    --background: 42 33% 94%;            /* bege F4F1EA */
+    --background-secondary: 40 30% 88%;  /* bege EBE5D9 */
+    --foreground: 135 16% 13%;           /* verde escuro 1A261E */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 135 16% 13%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 33% 96%;
+    --popover-foreground: 135 16% 13%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 135 21% 21%;              /* verde escuro 2A4032 */
+    --primary-foreground: 42 33% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 137 12% 40%;            /* verde médio 5B7061 */
+    --secondary-foreground: 42 33% 96%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 25% 86%;
+    --muted-foreground: 137 12% 35%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 39 23% 46%;                /* dourado palha 8E7C5A */
+    --accent-foreground: 42 33% 96%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 65% 42%;
+    --destructive-foreground: 42 33% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 18% 78%;
+    --input: 40 22% 88%;
+    --ring: 135 21% 21%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* === Tokens semânticos personalizados === */
+    --green-deep: 135 21% 21%;
+    --green-soft: 137 12% 40%;
+    --gold: 39 23% 46%;
+    --paper: 42 33% 94%;
+    --paper-warm: 40 30% 88%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* === Gradientes === */
+    --gradient-paper: radial-gradient(ellipse at top, hsl(40 30% 90%) 0%, hsl(42 33% 94%) 60%);
+    --gradient-emerald: linear-gradient(135deg, hsl(135 21% 18%) 0%, hsl(135 25% 28%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(39 30% 52%) 0%, hsl(39 23% 38%) 100%);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* === Sombras === */
+    --shadow-soft: 0 4px 20px -6px hsl(135 21% 21% / 0.08);
+    --shadow-elegant: 0 20px 50px -20px hsl(135 21% 21% / 0.18);
+    --shadow-gold: 0 10px 30px -12px hsl(39 23% 46% / 0.35);
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* === Transições === */
+    --ease-organic: cubic-bezier(0.16, 1, 0.3, 1);
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 42 33% 96%;
+    --sidebar-foreground: 135 16% 13%;
+    --sidebar-primary: 135 21% 21%;
+    --sidebar-primary-foreground: 42 33% 96%;
+    --sidebar-accent: 40 25% 86%;
+    --sidebar-accent-foreground: 135 16% 13%;
+    --sidebar-border: 40 18% 78%;
+    --sidebar-ring: 135 21% 21%;
   }
 }
 
@@ -99,7 +74,136 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html {
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image: 
+      radial-gradient(hsl(var(--paper-warm)) 1px, transparent 1px),
+      var(--gradient-paper);
+    background-size: 32px 32px, 100% 100%;
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: hsl(var(--primary));
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .font-script {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  /* === Ornamento decorativo === */
+  .ornament::before,
+  .ornament::after {
+    content: '';
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background: hsl(var(--accent));
+    vertical-align: middle;
+    margin: 0 0.75rem;
+    opacity: 0.6;
+  }
+
+  .ornament-leaf::after {
+    content: '❦';
+    color: hsl(var(--accent));
+    font-size: 1rem;
+    margin: 0 0.5rem;
+  }
+
+  /* === Cartão papel === */
+  .paper-card {
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .paper-card-elegant {
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-elegant);
+    border: 1px solid hsl(var(--accent) / 0.2);
+    position: relative;
+  }
+
+  .paper-card-elegant::before {
+    content: '';
+    position: absolute;
+    inset: 0.5rem;
+    border: 1px solid hsl(var(--accent) / 0.3);
+    border-radius: calc(var(--radius) - 0.25rem);
+    pointer-events: none;
+  }
+
+  /* === Mobile bottom nav item === */
+  .mobile-nav-item {
+    @apply flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-300;
+    color: hsl(var(--secondary));
+  }
+
+  .mobile-nav-item.active {
+    color: hsl(var(--primary));
+    transform: translateY(-4px);
+  }
+
+  .mobile-nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 6px;
+    height: 6px;
+    background: hsl(var(--accent));
+    border-radius: 50%;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* === Animações orgânicas === */
+  @keyframes leaf-sway {
+    0%, 100% { transform: rotate(-2deg) translateY(0); }
+    50% { transform: rotate(2deg) translateY(-4px); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .animate-leaf-sway { animation: leaf-sway 6s ease-in-out infinite; }
+  .animate-fade-up { animation: fade-up 0.8s var(--ease-organic) both; }
+  .animate-fade-in { animation: fade-in 0.6s ease-out both; }
+  .animate-scale-in { animation: scale-in 0.5s var(--ease-organic) both; }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .delay-700 { animation-delay: 0.7s; }
 }
