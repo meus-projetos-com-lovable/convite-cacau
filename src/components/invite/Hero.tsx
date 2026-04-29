@@ -98,10 +98,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.7, duration: 0.7 }}
         >
           {[
-            { label: "dias", value: countdown.days },
-            { label: "h", value: countdown.hours },
-            { label: "min", value: countdown.minutes },
-            { label: "s", value: countdown.seconds },
+            { label: "Dias", value: countdown.days },
+            { label: "Horas", value: countdown.hours },
+            { label: "Minutos", value: countdown.minutes },
+            { label: "Segundos", value: countdown.seconds },
           ].map((item) => (
             <div key={item.label} className="bg-background/60 rounded-xl py-2 border border-accent/20">
               <div className="font-display text-xl sm:text-2xl text-primary tabular-nums">
