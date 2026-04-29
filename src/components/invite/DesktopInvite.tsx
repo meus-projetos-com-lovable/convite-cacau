@@ -117,7 +117,14 @@ const DesktopInvite = () => {
           src={desktopLeaves}
           alt="" aria-hidden
           width={900} height={1280}
-          className="absolute -top-10 left-0 right-0 mx-auto w-full max-w-[1400px] pointer-events-none select-none"
+          className="absolute -top-20 -left-40 w-[55vw] max-w-[700px] pointer-events-none select-none opacity-50"
+          style={{ y: leavesY, opacity: leavesOpacity }}
+        />
+        <motion.img
+          src={desktopLeaves}
+          alt="" aria-hidden
+          width={900} height={1280}
+          className="absolute -top-32 -right-40 w-[50vw] max-w-[600px] pointer-events-none select-none opacity-40 scale-x-[-1]"
           style={{ y: leavesY, opacity: leavesOpacity }}
         />
 
