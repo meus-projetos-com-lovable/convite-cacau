@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Hero from "@/components/invite/Hero";
-import Timeline from "@/components/invite/Timeline";
+
 import Location from "@/components/invite/Location";
 import Mural from "@/components/invite/Mural";
 import RSVP from "@/components/invite/RSVP";
@@ -37,7 +37,7 @@ const Index = () => {
       <div className="flex justify-center my-2 opacity-70">
         <img src={branchDivider} alt="" aria-hidden width={120} height={120} className="w-20 h-20 object-contain" loading="lazy" />
       </div>
-      <Timeline />
+      
       <Location />
       <Mural />
       <RSVP />

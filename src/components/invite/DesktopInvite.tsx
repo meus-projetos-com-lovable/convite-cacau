@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { z } from "zod";
 import {
-  DoorOpen, UtensilsCrossed, Cake, Music,
   MapPin, Navigation, Plus, Minus, Check, Loader2, Heart, Send,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -16,16 +15,8 @@ const ENCODED = encodeURIComponent(ADDRESS);
 const RSVP_DEADLINE = new Date("2026-05-10T23:59:59").getTime();
 const EVENT_DATE = new Date("2026-05-30T15:00:00").getTime();
 
-const events = [
-  { time: "15h", icon: DoorOpen, title: "Recepção", desc: "Boas-vindas com chá e flores" },
-  { time: "16h", icon: UtensilsCrossed, title: "Almoço", desc: "Banquete em família" },
-  { time: "17h", icon: Cake, title: "Bolo & Brinde", desc: "Celebração dos 50 anos" },
-  { time: "18h", icon: Music, title: "Confraternização", desc: "Música, fotos e abraços" },
-];
-
 const navItems = [
   { id: "home", label: "Convite" },
-  { id: "programa", label: "Programa" },
   { id: "local", label: "Local" },
   { id: "mural", label: "Mural" },
   { id: "confirmar", label: "Confirmar" },
@@ -177,10 +168,6 @@ const DesktopInvite = () => {
                 className="bg-gradient-emerald text-primary-foreground px-10 py-4 rounded-full text-sm tracking-[0.2em] uppercase shadow-elegant hover:shadow-gold transition-all hover:scale-[1.03]">
                 Confirmar Presença
               </a>
-              <a href="#programa"
-                className="text-primary text-sm tracking-[0.2em] uppercase border-b border-accent/60 pb-1 hover:border-primary transition">
-                Ver Programa
-              </a>
             </div>
           </motion.div>
 
@@ -238,41 +225,6 @@ const DesktopInvite = () => {
       <div className="flex justify-center py-8">
         <img src={branchDivider} alt="" aria-hidden width={120} height={120} className="w-24 h-24 object-contain opacity-70" loading="lazy" />
       </div>
-
-      {/* === PROGRAMA === */}
-      <section id="programa" className="py-32 px-10">
-        <div className="max-w-6xl mx-auto">
-          <motion.div className="text-center mb-20"
-            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <p className="text-[0.7rem] tracking-[0.5em] uppercase text-accent mb-4">Cronograma</p>
-            <h2 className="font-display text-6xl text-primary mb-3">O Programa do Dia</h2>
-            <p className="font-script italic text-xl text-secondary">uma tarde para guardar para sempre</p>
-          </motion.div>
-
-          <div className="grid grid-cols-4 gap-6">
-            {events.map((ev, i) => {
-              const Icon = ev.icon;
-              return (
-                <motion.div
-                  key={ev.time}
-                  className="paper-card-elegant p-8 text-center group hover:shadow-elegant transition-all duration-700"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: i * 0.12 }}
-                >
-                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-gradient-emerald flex items-center justify-center shadow-soft group-hover:scale-110 transition-transform duration-500">
-                    <Icon className="w-7 h-7 text-primary-foreground" strokeWidth={1.5} />
-                  </div>
-                  <p className="font-script text-3xl text-accent mb-2">{ev.time}</p>
-                  <h3 className="font-display text-xl text-primary mb-2">{ev.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{ev.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* === LOCAL === */}
       <section id="local" className="py-32 px-10 bg-paper-warm/30">
