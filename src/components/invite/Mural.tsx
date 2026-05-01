@@ -102,7 +102,7 @@ const Mural = () => {
           </button>
         </motion.form>
 
-        <div className="space-y-3">
+        <div className="grid grid-rows-2 grid-flow-col gap-4 overflow-x-auto pb-4 snap-x scrollbar-elegant">
           <AnimatePresence initial={false}>
             {items.map((m) => (
               <motion.div
@@ -111,7 +111,7 @@ const Mural = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="paper-card p-4"
+                className="paper-card p-5 min-w-[280px] w-[80vw] max-w-[320px] snap-center shrink-0"
               >
                 <p className="text-sm text-foreground italic font-script text-base leading-snug">
                   "{m.mensagem}"
@@ -121,7 +121,7 @@ const Mural = () => {
             ))}
           </AnimatePresence>
           {items.length === 0 && (
-            <p className="text-center text-sm text-muted-foreground italic py-6">
+            <p className="text-center w-full text-sm text-muted-foreground italic py-6">
               Seja o primeiro a deixar um recado ❦
             </p>
           )}

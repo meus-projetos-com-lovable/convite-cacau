@@ -168,6 +168,26 @@
     background: hsl(var(--accent));
     border-radius: 50%;
   }
+
+  /* === Custom Scrollbars === */
+  .scrollbar-elegant::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-elegant::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-elegant::-webkit-scrollbar-thumb {
+    background: hsl(var(--accent) / 0.4);
+    border-radius: 10px;
+  }
+  .scrollbar-elegant::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent) / 0.7);
+  }
+  .scrollbar-elegant {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--accent) / 0.4) transparent;
+  }
 }
 
 @layer utilities {

@@ -29,7 +29,6 @@ const rsvpSchema = z.object({
   telefone: z.string().trim().max(20).optional().or(z.literal("")),
   num_acompanhantes: z.number().int().min(0).max(10),
   acompanhantes: z.array(z.string().trim().min(1).max(100)),
-  observacoes: z.string().trim().max(300).optional().or(z.literal("")),
 });
 
 const msgSchema = z.object({
@@ -112,28 +111,49 @@ const DesktopInvite = () => {
 
       {/* === HERO === */}
       <section ref={heroRef} id="home" className="relative min-h-screen flex items-center px-10 pt-20 overflow-hidden">
+        {/* Folhas decorativas com fade mask para não conflitar com background */}
         <motion.img
           src={desktopLeaves}
           alt="" aria-hidden
           width={900} height={1280}
-          className="absolute -top-20 -left-40 w-[55vw] max-w-[700px] pointer-events-none select-none opacity-90"
-          style={{ y: leavesY, opacity: leavesOpacity }}
+          className="absolute -top-20 -left-40 w-[55vw] max-w-[700px] pointer-events-none select-none opacity-100"
+          style={{ 
+            y: leavesY, 
+            opacity: leavesOpacity,
+            WebkitMaskImage: "linear-gradient(to right, black 40%, transparent 95%)",
+            maskImage: "linear-gradient(to right, black 40%, transparent 95%)"
+          }}
         />
         <motion.img
           src={desktopLeaves}
           alt="" aria-hidden
           width={900} height={1280}
-          className="absolute -top-32 -right-40 w-[50vw] max-w-[600px] pointer-events-none select-none opacity-80 scale-x-[-1]"
-          style={{ y: leavesY, opacity: leavesOpacity }}
+          className="absolute -top-32 -right-72 w-[50vw] max-w-[600px] pointer-events-none select-none opacity-90 scale-x-[-1]"
+          style={{ 
+            y: leavesY, 
+            opacity: leavesOpacity,
+            WebkitMaskImage: "linear-gradient(to left, black 40%, transparent 95%)",
+            maskImage: "linear-gradient(to left, black 40%, transparent 95%)"
+          }}
         />
 
-        {/* Degradê bege que suaviza a transição entre folhas e o texto */}
+        {/* Degradê bege original para suavizar a transição do texto */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none z-[1]"
           style={{
             background:
-              "linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.92) 28%, hsl(var(--background) / 0.55) 50%, hsl(var(--background) / 0) 75%)",
+              "linear-gradient(90deg, hsl(var(--background) / 0.4) 0%, hsl(var(--background) / 0.85) 28%, hsl(var(--background) / 0.55) 50%, hsl(var(--background) / 0) 75%)",
+          }}
+        />
+
+        {/* Degradê na extrema esquerda solicitado para não ter nenhuma linha */}
+        <div
+          aria-hidden
+          className="absolute inset-y-0 left-0 w-[55vw] pointer-events-none z-[2]"
+          style={{
+            background:
+              "linear-gradient(90deg, hsl(var(--background) / 0.5) 0%, transparent 100%)",
           }}
         />
 
@@ -183,8 +203,8 @@ const DesktopInvite = () => {
               className="w-full max-w-[500px] animate-leaf-sway"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <p className="font-script italic text-lg text-secondary mb-1">trinta de maio</p>
-              <p className="font-display text-5xl text-primary leading-none mb-1">2026</p>
+              <p className="font-script italic text-lg text-secondary mb-1">2026</p>
+              <p className="font-display text-4xl text-primary leading-none mb-1">30 de maio</p>
               <p className="text-xs tracking-[0.35em] uppercase text-accent mt-2">15h às 19h</p>
             </div>
           </motion.div>
@@ -198,7 +218,7 @@ const DesktopInvite = () => {
           className="max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
         >
-          <p className="text-center text-[0.7rem] tracking-[0.5em] uppercase text-accent mb-3">
+          <p className="text-center text-[0.85rem] font-medium tracking-[0.35em] uppercase text-secondary mb-4">
             {phase === "rsvp"
               ? "Contagem regressiva para confirmar presença · até 10 de maio"
               : "Contagem regressiva para o grande dia · 30 de maio"}
@@ -354,7 +374,7 @@ const MuralDesktop = () => {
             </button>
           </motion.form>
 
-          <div className="col-span-7 space-y-4 max-h-[600px] overflow-y-auto pr-3">
+          <div className="col-span-7 space-y-4 max-h-[600px] overflow-y-auto pr-3 scrollbar-elegant">
             {items.length === 0 && (
               <p className="text-center text-muted-foreground italic py-12 font-script text-xl">
                 Seja o primeiro a deixar um recado ❦
@@ -381,7 +401,6 @@ const RSVPDesktop = () => {
   const [telefone, setTelefone] = useState("");
   const [num, setNum] = useState(0);
   const [companions, setCompanions] = useState<string[]>([]);
-  const [obs, setObs] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
@@ -397,7 +416,7 @@ const RSVPDesktop = () => {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const parsed = rsvpSchema.safeParse({ nome, telefone, num_acompanhantes: num, acompanhantes: companions, observacoes: obs });
+    const parsed = rsvpSchema.safeParse({ nome, telefone, num_acompanhantes: num, acompanhantes: companions });
     if (!parsed.success) { toast.error(parsed.error.errors[0].message); return; }
     setLoading(true);
     const { error } = await supabase.from("convidados").insert({
@@ -405,7 +424,6 @@ const RSVPDesktop = () => {
       telefone: parsed.data.telefone || null,
       num_acompanhantes: parsed.data.num_acompanhantes,
       acompanhantes: parsed.data.acompanhantes,
-      observacoes: parsed.data.observacoes || null,
       presenca_confirmada: true,
     });
     setLoading(false);
@@ -481,12 +499,7 @@ const RSVPDesktop = () => {
                 </div>
               )}
 
-              <div>
-                <label className="block text-[0.65rem] tracking-[0.3em] uppercase text-secondary mb-2">Observação (opcional)</label>
-                <textarea value={obs} onChange={(e) => setObs(e.target.value)} maxLength={300} rows={3}
-                  className="w-full bg-background/60 border border-border rounded-xl px-4 py-3 focus:outline-none focus:border-accent transition resize-none"
-                  placeholder="Restrição alimentar, etc." />
-              </div>
+
 
               <button type="submit" disabled={loading}
                 className="w-full bg-gradient-emerald text-primary-foreground py-4 rounded-full text-sm tracking-[0.25em] uppercase shadow-elegant hover:shadow-gold transition-all hover:scale-[1.01] disabled:opacity-60 flex items-center justify-center gap-2">

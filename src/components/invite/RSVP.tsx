@@ -10,7 +10,6 @@ const rsvpSchema = z.object({
   telefone: z.string().trim().max(20).optional().or(z.literal("")),
   num_acompanhantes: z.number().int().min(0).max(10),
   acompanhantes: z.array(z.string().trim().min(1, "Nome obrigatório").max(100)),
-  observacoes: z.string().trim().max(300).optional().or(z.literal("")),
 });
 
 const RSVP = () => {
@@ -18,7 +17,6 @@ const RSVP = () => {
   const [telefone, setTelefone] = useState("");
   const [num, setNum] = useState(0);
   const [companions, setCompanions] = useState<string[]>([]);
-  const [obs, setObs] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
@@ -35,7 +33,7 @@ const RSVP = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = rsvpSchema.safeParse({
-      nome, telefone, num_acompanhantes: num, acompanhantes: companions, observacoes: obs,
+      nome, telefone, num_acompanhantes: num, acompanhantes: companions,
     });
     if (!parsed.success) {
       toast.error(parsed.error.errors[0].message);
@@ -47,7 +45,6 @@ const RSVP = () => {
       telefone: parsed.data.telefone || null,
       num_acompanhantes: parsed.data.num_acompanhantes,
       acompanhantes: parsed.data.acompanhantes,
-      observacoes: parsed.data.observacoes || null,
       presenca_confirmada: true,
     });
     setLoading(false);
@@ -161,16 +158,6 @@ const RSVP = () => {
                     </motion.div>
                   ))}
                 </AnimatePresence>
-
-                <div>
-                  <label className="block text-xs uppercase tracking-wider text-secondary mb-1.5">Observação (opcional)</label>
-                  <textarea
-                    value={obs} onChange={(e) => setObs(e.target.value)}
-                    maxLength={300} rows={2}
-                    className="w-full bg-background/60 border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-accent transition resize-none"
-                    placeholder="Restrição alimentar, etc."
-                  />
-                </div>
 
                 <button
                   type="submit" disabled={loading}

@@ -13,7 +13,7 @@ const Index = () => {
   const isDesktop = useIsDesktop();
 
   useEffect(() => {
-    document.title = "50 Anos · Ação de Graças — 30 de Maio de 2026";
+    document.title = "50 anos Cacau";
     const meta = document.querySelector('meta[name="description"]');
     const desc = "Convite digital: celebre 50 anos de vida e gratidão. RSVP, mapa, programa e mural de recados.";
     if (meta) meta.setAttribute("content", desc);
@@ -41,9 +41,9 @@ const Index = () => {
       <Location />
       <Mural />
       <RSVP />
-      <footer className="text-center py-10 px-5 text-xs text-secondary tracking-wider">
-        <p className="font-script text-base text-primary italic mb-1">"Até aqui nos ajudou o Senhor"</p>
-        <p>1 Samuel 7.12 · 30 de Maio de 2026</p>
+      <footer className="text-center py-10 px-5 text-secondary">
+        <p className="font-script text-2xl text-primary italic mb-2">"Até aqui nos ajudou o Senhor"</p>
+        <p className="text-xs tracking-[0.2em] uppercase opacity-80">1 Samuel 7.12 · 30 de Maio de 2026</p>
       </footer>
       <MobileNav />
     </main>

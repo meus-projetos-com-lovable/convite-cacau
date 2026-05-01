@@ -3,7 +3,6 @@ import { Home, Clock, MapPin, MessageCircle, Heart } from "lucide-react";
 
 const items = [
   { id: "home", label: "Convite", icon: Home },
-  { id: "programa", label: "Programa", icon: Clock },
   { id: "local", label: "Local", icon: MapPin },
   { id: "mural", label: "Mural", icon: MessageCircle },
   { id: "confirmar", label: "Confirmar", icon: Heart },
