@@ -176,10 +176,6 @@ const DesktopInvite = () => {
                 className="bg-gradient-emerald text-primary-foreground px-10 py-4 rounded-full text-sm tracking-[0.2em] uppercase shadow-elegant hover:shadow-gold transition-all hover:scale-[1.03]">
                 Confirmar Presença
               </a>
-              <a href="#programa"
-                className="text-primary text-sm tracking-[0.2em] uppercase border-b border-accent/60 pb-1 hover:border-primary transition">
-                Ver Programa
-              </a>
             </div>
           </motion.div>
 
