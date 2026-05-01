@@ -59,21 +59,21 @@ const Hero = () => {
           className="text-[0.7rem] tracking-[0.35em] uppercase text-secondary mb-3"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.6 }}
         >
-          Ação de Graças
+          Convite
         </motion.p>
 
         <motion.h1
-          className="font-display text-3xl sm:text-4xl text-primary leading-tight"
+          className="font-display text-3xl sm:text-4xl text-primary leading-tight text-balance"
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.8 }}
         >
-          pelos
+          Culto de Ação de Graças
         </motion.h1>
 
         <motion.h2
-          className="font-script text-6xl sm:text-7xl text-primary leading-none my-2"
+          className="font-script text-5xl sm:text-6xl text-primary leading-none my-3"
           initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.1, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          50 Anos
+          Cacau · 50 anos
         </motion.h2>
 
         <motion.div

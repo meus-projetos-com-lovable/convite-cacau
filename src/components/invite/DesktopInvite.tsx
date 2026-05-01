@@ -135,13 +135,13 @@ const DesktopInvite = () => {
             initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5 }}
           >
             <p className="text-[0.7rem] tracking-[0.5em] uppercase text-accent mb-6">
-              Ação de Graças · 30.05.2026
+              Convite · 30.05.2026
             </p>
-            <h1 className="font-display text-7xl xl:text-8xl text-primary leading-[0.95] mb-2">
-              Cinquenta anos
+            <h1 className="font-display text-6xl xl:text-7xl text-primary leading-[1] mb-4 text-balance">
+              Culto de Ação de Graças
             </h1>
-            <h2 className="font-script text-7xl xl:text-8xl text-primary/90 italic leading-none mb-8">
-              de gratidão
+            <h2 className="font-script text-6xl xl:text-7xl text-primary/90 italic leading-none mb-8">
+              Cacau · 50 anos
             </h2>
             <div className="flex items-center gap-4 mb-10">
               <span className="block h-px w-20 bg-accent" />
