@@ -119,20 +119,10 @@ const Hero = () => {
             <span className="block h-px w-10 sm:w-16 bg-accent" />
             <span className="text-accent text-sm">❦</span>
             <span className="font-script italic text-xl text-secondary">
-              Venham celebrar comigo
+              Venham celebrar comigo!
             </span>
           </motion.div>
 
-          <motion.p
-            className="text-sm text-muted-foreground leading-relaxed mb-8 text-pretty px-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.6 }}
-          >
-            Meio século atrás, Deus já sonhava com meu dias. Hoje, celebro com
-            profunda gratidão cada estação vivida — e quero dividir essa alegria
-            com você.
-          </motion.p>
 
           <motion.a
             href="#confirmar"
