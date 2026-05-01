@@ -117,23 +117,25 @@ const DesktopInvite = () => {
           src={desktopLeaves}
           alt="" aria-hidden
           width={900} height={1280}
-          className="absolute -top-20 -left-40 w-[55vw] max-w-[700px] pointer-events-none select-none opacity-50"
+          className="absolute -top-32 -left-64 w-[42vw] max-w-[560px] pointer-events-none select-none opacity-25 blur-[1px]"
           style={{ y: leavesY, opacity: leavesOpacity }}
         />
         <motion.img
           src={desktopLeaves}
           alt="" aria-hidden
           width={900} height={1280}
-          className="absolute -top-32 -right-40 w-[50vw] max-w-[600px] pointer-events-none select-none opacity-40 scale-x-[-1]"
+          className="absolute -top-40 -right-56 w-[42vw] max-w-[540px] pointer-events-none select-none opacity-25 blur-[1px] scale-x-[-1]"
           style={{ y: leavesY, opacity: leavesOpacity }}
         />
 
         <div className="max-w-7xl mx-auto w-full grid grid-cols-12 gap-16 items-center relative z-10">
           {/* Texto à esquerda */}
           <motion.div
-            className="col-span-7"
+            className="col-span-7 relative"
             initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, delay: 0.5 }}
           >
+            {/* Halo sutil para garantir legibilidade sobre folhas */}
+            <div aria-hidden className="absolute -inset-8 -z-10 bg-gradient-to-r from-background/85 via-background/70 to-transparent blur-2xl rounded-[3rem]" />
             <p className="text-[0.7rem] tracking-[0.5em] uppercase text-accent mb-6">
               Convite · 30.05.2026
             </p>
