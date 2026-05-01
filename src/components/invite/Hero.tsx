@@ -174,7 +174,7 @@ const Hero = () => {
       </section>
 
       {/* === COUNTDOWN === */}
-      <section className="px-5 -mt-6 mb-12 relative z-10">
+      <section className="px-5 mt-16 mb-16 relative z-10">
         <motion.div
           className="max-w-md mx-auto"
           initial={{ opacity: 0, y: 20 }}
