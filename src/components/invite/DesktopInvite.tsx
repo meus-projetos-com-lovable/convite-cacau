@@ -47,11 +47,18 @@ const msgSchema = z.object({
 });
 
 const DesktopInvite = () => {
-  // Countdown
+  // Countdown — até 10/05 (confirmação) ou até 30/05 (evento)
   const [cd, setCd] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [phase, setPhase] = useState<"rsvp" | "event">(
+    Date.now() < RSVP_DEADLINE ? "rsvp" : "event"
+  );
   useEffect(() => {
     const tick = () => {
-      const diff = Math.max(0, TARGET - Date.now());
+      const now = Date.now();
+      const isRsvp = now < RSVP_DEADLINE;
+      setPhase(isRsvp ? "rsvp" : "event");
+      const target = isRsvp ? RSVP_DEADLINE : EVENT_DATE;
+      const diff = Math.max(0, target - now);
       setCd({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff / 3600000) % 24),
