@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { z } from "zod";
 import {
-  DoorOpen, UtensilsCrossed, Cake, Music,
   MapPin, Navigation, Plus, Minus, Check, Loader2, Heart, Send,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -15,13 +14,6 @@ const ADDRESS = "Rua Mirataia, 350";
 const ENCODED = encodeURIComponent(ADDRESS);
 const RSVP_DEADLINE = new Date("2026-05-10T23:59:59").getTime();
 const EVENT_DATE = new Date("2026-05-30T15:00:00").getTime();
-
-const events = [
-  { time: "15h", icon: DoorOpen, title: "Recepção", desc: "Boas-vindas com chá e flores" },
-  { time: "16h", icon: UtensilsCrossed, title: "Almoço", desc: "Banquete em família" },
-  { time: "17h", icon: Cake, title: "Bolo & Brinde", desc: "Celebração dos 50 anos" },
-  { time: "18h", icon: Music, title: "Confraternização", desc: "Música, fotos e abraços" },
-];
 
 const navItems = [
   { id: "home", label: "Convite" },
