@@ -25,7 +25,6 @@ const events = [
 
 const navItems = [
   { id: "home", label: "Convite" },
-  { id: "programa", label: "Programa" },
   { id: "local", label: "Local" },
   { id: "mural", label: "Mural" },
   { id: "confirmar", label: "Confirmar" },
