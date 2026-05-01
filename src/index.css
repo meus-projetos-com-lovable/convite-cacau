@@ -7,30 +7,30 @@
 @layer base {
   :root {
     /* === Paleta orgânica bege/verde === */
-    --background: 42 33% 94%;            /* bege F4F1EA */
-    --background-secondary: 40 30% 88%;  /* bege EBE5D9 */
+    --background: 38 28% 87%;            /* bege E8E0D0 */
+    --background-secondary: 36 26% 82%;  /* bege DDD5C4 */
     --foreground: 135 16% 13%;           /* verde escuro 1A261E */
 
-    --card: 0 0% 100%;
+    --card: 38 28% 87%;
     --card-foreground: 135 16% 13%;
 
-    --popover: 42 33% 96%;
+    --popover: 38 28% 87%;
     --popover-foreground: 135 16% 13%;
 
     --primary: 135 21% 21%;              /* verde escuro 2A4032 */
-    --primary-foreground: 42 33% 96%;
+    --primary-foreground: 38 28% 87%;
 
     --secondary: 137 12% 40%;            /* verde médio 5B7061 */
-    --secondary-foreground: 42 33% 96%;
+    --secondary-foreground: 38 28% 87%;
 
     --muted: 40 25% 86%;
     --muted-foreground: 137 12% 35%;
 
     --accent: 39 23% 46%;                /* dourado palha 8E7C5A */
-    --accent-foreground: 42 33% 96%;
+    --accent-foreground: 38 28% 87%;
 
     --destructive: 0 65% 42%;
-    --destructive-foreground: 42 33% 96%;
+    --destructive-foreground: 38 28% 87%;
 
     --border: 40 18% 78%;
     --input: 40 22% 88%;
@@ -42,11 +42,11 @@
     --green-deep: 135 21% 21%;
     --green-soft: 137 12% 40%;
     --gold: 39 23% 46%;
-    --paper: 42 33% 94%;
-    --paper-warm: 40 30% 88%;
+    --paper: 38 28% 87%;
+    --paper-warm: 36 26% 82%;
 
     /* === Gradientes === */
-    --gradient-paper: radial-gradient(ellipse at top, hsl(40 30% 90%) 0%, hsl(42 33% 94%) 60%);
+    --gradient-paper: radial-gradient(ellipse at top, hsl(36 26% 84%) 0%, hsl(38 28% 87%) 60%);
     --gradient-emerald: linear-gradient(135deg, hsl(135 21% 18%) 0%, hsl(135 25% 28%) 100%);
     --gradient-gold: linear-gradient(135deg, hsl(39 30% 52%) 0%, hsl(39 23% 38%) 100%);
 
@@ -80,10 +80,8 @@
 
   body {
     @apply bg-background text-foreground font-body;
-    background-image: 
-      radial-gradient(hsl(var(--paper-warm)) 1px, transparent 1px),
-      var(--gradient-paper);
-    background-size: 32px 32px, 100% 100%;
+    background-image: var(--gradient-paper);
+    background-size: 100% 100%;
     background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
   }

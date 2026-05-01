@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { MapPin, Navigation } from "lucide-react";
+import SectionCorners from "./SectionCorners";
 
 const ADDRESS = "Rua Mirataia, 350";
 const ENCODED = encodeURIComponent(ADDRESS);
 
 const Location = () => (
-  <section id="local" className="py-16 px-5">
-    <div className="max-w-md mx-auto">
+  <section id="local" className="py-16 px-5 relative overflow-hidden">
+    <SectionCorners className="z-0" />
+    <div className="max-w-md mx-auto relative z-10">
       <motion.h2
         className="text-center font-display text-3xl text-primary mb-2"
         initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}

@@ -4,6 +4,7 @@ import { z } from "zod";
 import { Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import SectionCorners from "./SectionCorners";
 
 interface Mensagem {
   id: string;
@@ -63,12 +64,13 @@ const Mural = () => {
     }
     setNome("");
     setMensagem("");
-    toast.success("Recado enviado com carinho ❦");
+    toast.success("Recado enviado con carinho ❦");
   };
 
   return (
-    <section id="mural" className="py-16 px-5">
-      <div className="max-w-md mx-auto">
+    <section id="mural" className="py-16 px-5 relative overflow-hidden">
+      <SectionCorners className="z-0" />
+      <div className="max-w-md mx-auto relative z-10">
         <motion.h2
           className="text-center font-display text-3xl text-primary mb-2"
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
