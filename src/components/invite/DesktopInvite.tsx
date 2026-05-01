@@ -203,12 +203,20 @@ const DesktopInvite = () => {
           </motion.div>
         </div>
 
-        {/* Countdown faixa inferior */}
+      </section>
+
+      {/* === COUNTDOWN === */}
+      <section className="px-10 -mt-4 mb-4 relative z-10">
         <motion.div
-          className="absolute bottom-10 left-0 right-0 z-10"
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.5 }}
+          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
         >
-          <div className="max-w-3xl mx-auto bg-card/90 backdrop-blur-sm border border-accent/20 rounded-2xl shadow-elegant px-10 py-5 grid grid-cols-4 gap-6">
+          <p className="text-center text-[0.7rem] tracking-[0.5em] uppercase text-accent mb-3">
+            {phase === "rsvp"
+              ? "Contagem regressiva para confirmar presença · até 10 de maio"
+              : "Contagem regressiva para o grande dia · 30 de maio"}
+          </p>
+          <div className="bg-card/90 backdrop-blur-sm border border-accent/20 rounded-2xl shadow-elegant px-10 py-5 grid grid-cols-4 gap-6">
             {[
               { label: "Dias", value: cd.days },
               { label: "Horas", value: cd.hours },
