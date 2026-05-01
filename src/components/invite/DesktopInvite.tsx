@@ -13,7 +13,8 @@ import branchDivider from "@/assets/branch-divider.png";
 
 const ADDRESS = "Rua Mirataia, 350";
 const ENCODED = encodeURIComponent(ADDRESS);
-const TARGET = new Date("2026-05-30T15:00:00").getTime();
+const RSVP_DEADLINE = new Date("2026-05-10T23:59:59").getTime();
+const EVENT_DATE = new Date("2026-05-30T15:00:00").getTime();
 
 const events = [
   { time: "15h", icon: DoorOpen, title: "Recepção", desc: "Boas-vindas com chá e flores" },
