@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Hero from "@/components/invite/Hero";
-import Timeline from "@/components/invite/Timeline";
+
 import Location from "@/components/invite/Location";
 import Mural from "@/components/invite/Mural";
 import RSVP from "@/components/invite/RSVP";
