@@ -116,15 +116,15 @@ const DesktopInvite = () => {
         <motion.img
           src={desktopLeaves}
           alt="" aria-hidden
-          width={900} height={1280}
-          className="absolute -top-20 -left-40 w-[55vw] max-w-[700px] pointer-events-none select-none opacity-90"
+          width={1080} height={1920}
+          className="absolute top-10 -left-24 h-[90vh] w-auto pointer-events-none select-none opacity-95"
           style={{ y: leavesY, opacity: leavesOpacity }}
         />
         <motion.img
           src={desktopLeaves}
           alt="" aria-hidden
-          width={900} height={1280}
-          className="absolute -top-32 -right-40 w-[50vw] max-w-[600px] pointer-events-none select-none opacity-80 scale-x-[-1]"
+          width={1080} height={1920}
+          className="absolute top-10 -right-24 h-[90vh] w-auto pointer-events-none select-none opacity-95 scale-x-[-1]"
           style={{ y: leavesY, opacity: leavesOpacity }}
         />
 
@@ -134,7 +134,7 @@ const DesktopInvite = () => {
           className="absolute inset-0 pointer-events-none z-[1]"
           style={{
             background:
-              "linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.92) 28%, hsl(var(--background) / 0.55) 50%, hsl(var(--background) / 0) 75%)",
+              "linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.85) 25%, hsl(var(--background) / 0.45) 48%, hsl(var(--background) / 0) 70%)",
           }}
         />
 
