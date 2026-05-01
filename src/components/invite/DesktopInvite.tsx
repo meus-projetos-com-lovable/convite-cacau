@@ -13,7 +13,8 @@ import branchDivider from "@/assets/branch-divider.png";
 
 const ADDRESS = "Rua Mirataia, 350";
 const ENCODED = encodeURIComponent(ADDRESS);
-const TARGET = new Date("2026-05-30T15:00:00").getTime();
+const RSVP_DEADLINE = new Date("2026-05-10T23:59:59").getTime();
+const EVENT_DATE = new Date("2026-05-30T15:00:00").getTime();
 
 const events = [
   { time: "15h", icon: DoorOpen, title: "Recepção", desc: "Boas-vindas com chá e flores" },
@@ -46,11 +47,18 @@ const msgSchema = z.object({
 });
 
 const DesktopInvite = () => {
-  // Countdown
+  // Countdown — até 10/05 (confirmação) ou até 30/05 (evento)
   const [cd, setCd] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [phase, setPhase] = useState<"rsvp" | "event">(
+    Date.now() < RSVP_DEADLINE ? "rsvp" : "event"
+  );
   useEffect(() => {
     const tick = () => {
-      const diff = Math.max(0, TARGET - Date.now());
+      const now = Date.now();
+      const isRsvp = now < RSVP_DEADLINE;
+      setPhase(isRsvp ? "rsvp" : "event");
+      const target = isRsvp ? RSVP_DEADLINE : EVENT_DATE;
+      const diff = Math.max(0, target - now);
       setCd({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff / 3600000) % 24),
@@ -195,12 +203,20 @@ const DesktopInvite = () => {
           </motion.div>
         </div>
 
-        {/* Countdown faixa inferior */}
+      </section>
+
+      {/* === COUNTDOWN === */}
+      <section className="px-10 -mt-4 mb-4 relative z-10">
         <motion.div
-          className="absolute bottom-10 left-0 right-0 z-10"
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.5 }}
+          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
         >
-          <div className="max-w-3xl mx-auto bg-card/90 backdrop-blur-sm border border-accent/20 rounded-2xl shadow-elegant px-10 py-5 grid grid-cols-4 gap-6">
+          <p className="text-center text-[0.7rem] tracking-[0.5em] uppercase text-accent mb-3">
+            {phase === "rsvp"
+              ? "Contagem regressiva para confirmar presença · até 10 de maio"
+              : "Contagem regressiva para o grande dia · 30 de maio"}
+          </p>
+          <div className="bg-card/90 backdrop-blur-sm border border-accent/20 rounded-2xl shadow-elegant px-10 py-5 grid grid-cols-4 gap-6">
             {[
               { label: "Dias", value: cd.days },
               { label: "Horas", value: cd.hours },
