@@ -19,6 +19,7 @@ const RSVP = () => {
   const [num, setNum] = useState(0);
   const [companions, setCompanions] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [done, setDone] = useState(false);
 
   const updateNum = (next: number) => {
@@ -53,8 +54,9 @@ const RSVP = () => {
       toast.error("Não foi possível confirmar. Tente novamente.");
       return;
     }
-    setDone(true);
+    setSuccess(true);
     toast.success("Presença confirmada! Obrigada ❦");
+    setTimeout(() => setDone(true), 1200);
   };
 
   return (
@@ -162,10 +164,16 @@ const RSVP = () => {
                 </AnimatePresence>
 
                 <button
-                  type="submit" disabled={loading}
-                  className="w-full bg-gradient-emerald text-primary-foreground py-3.5 rounded-full font-medium tracking-wide shadow-elegant hover:shadow-gold transition-all hover:scale-[1.02] disabled:opacity-60 disabled:scale-100 flex items-center justify-center gap-2"
+                  type="submit" disabled={loading || success}
+                  className="w-full bg-gradient-emerald text-primary-foreground py-3.5 rounded-full font-medium tracking-wide shadow-elegant hover:shadow-gold transition-all hover:scale-[1.02] disabled:opacity-90 disabled:scale-100 flex items-center justify-center gap-2"
                 >
-                  {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Enviando...</> : <><Heart className="w-4 h-4" /> Confirmar Presença</>}
+                  {success ? (
+                    <><Check className="w-4 h-4" /> Presença confirmada!</>
+                  ) : loading ? (
+                    <><Loader2 className="w-4 h-4 animate-spin" /> Enviando...</>
+                  ) : (
+                    <><Heart className="w-4 h-4" /> Confirmar Presença</>
+                  )}
                 </button>
               </motion.form>
             )}
