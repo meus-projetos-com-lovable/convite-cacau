@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
-import { Send, Loader2 } from "lucide-react";
+import { Send, Loader2, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import SectionCorners from "./SectionCorners";
@@ -23,6 +23,7 @@ const Mural = () => {
   const [nome, setNome] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -64,7 +65,9 @@ const Mural = () => {
     }
     setNome("");
     setMensagem("");
-    toast.success("Recado enviado con carinho ❦");
+    setSuccess(true);
+    toast.success("Recado enviado com carinho ❦");
+    setTimeout(() => setSuccess(false), 2000);
   };
 
   return (
@@ -97,10 +100,16 @@ const Mural = () => {
             className="w-full bg-background/60 border border-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-accent transition resize-none"
           />
           <button
-            type="submit" disabled={loading}
-            className="w-full bg-gradient-emerald text-primary-foreground py-2.5 rounded-full text-sm font-medium shadow-soft hover:shadow-elegant transition-all hover:scale-[1.01] disabled:opacity-60 flex items-center justify-center gap-2"
+            type="submit" disabled={loading || success}
+            className="w-full bg-gradient-emerald text-primary-foreground py-2.5 rounded-full text-sm font-medium shadow-soft hover:shadow-elegant transition-all hover:scale-[1.01] disabled:opacity-90 flex items-center justify-center gap-2"
           >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><Send className="w-4 h-4" /> Enviar</>}
+            {success ? (
+              <><Check className="w-4 h-4" /> Recado enviado!</>
+            ) : loading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <><Send className="w-4 h-4" /> Enviar</>
+            )}
           </button>
         </motion.form>
 
