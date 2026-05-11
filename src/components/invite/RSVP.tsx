@@ -89,7 +89,7 @@ const RSVP = () => {
                 </div>
                 <h3 className="font-display text-2xl text-primary mb-2">Confirmado!</h3>
                 <p className="text-sm text-muted-foreground text-balance">
-                  Estamos ansiosas para celebrar com você. Até lá! ❦
+                  Estamos ansiosos para celebrar com você. Até lá! ❦
                 </p>
               </motion.div>
             ) : (
